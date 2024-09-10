@@ -14,6 +14,31 @@ def show_main(request):
             'price': 460000,
             'description': 'berikut adalah kitab karya imam abu bakar syatho ad dimyathi, kitab ini terdiri dari 4 jilid yang merupakan syarh dari kitab fathul mu\'in.'
         },
+        {
+            'name': 'Is\'adur rofiq',
+            'price': 35000,
+            'description': 'Kitab yang berisi tentang hukum-hukum fiqh yang disertai dengan ilmu tasawwuf..'
+        },
+        {
+            'name': 'Siroh nabawiyah',
+            'price': 150000,
+            'description': 'Kitab yang berisi tentang sejarah yang berfokus pada hukum-hukum fiqh dimasa kenabian dan setelahnya.'
+        },
+        {
+            'name': 'Shohih bukhori',
+            'price': 560000,
+            'description': 'Kitab yang berisi kumpulan hadits-hadits.'
+        },
+        {
+            'name': 'Shohih muslim',
+            'price': 230000,
+            'description': 'Kitab yang berisi kumpulan hadits-hadits.'
+        },
+        {
+            'name': 'Idhohul mubham',
+            'price': 15000,
+            'description': 'Kitab yang berisi tentang ilmu manthiq.'
+        }
         # kalo mau tambah produk disini
     ]
     context = {
