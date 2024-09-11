@@ -52,7 +52,7 @@
 ### 8. Membuat README.md file ini
 
 ## 2.) bagan yang berisi request client ke web aplikasi berbasis Django
-![image bagan client]("https://github.com/4hmadanbiy4/PBP_images/blob/main/bagan_client.png")
+![image about client](image.png)
 
 ## 3.) Jelaskan fungsi git dalam pengembangan perangkat lunak!
 

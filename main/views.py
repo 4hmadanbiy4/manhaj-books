@@ -5,7 +5,7 @@ from .models import Product
 def show_main(request):
     products = [
         {
-            'name': 'Fathul qorib',
+            'name': 'Fathul Qorib',
             'price': 20000,
             'description': 'Kitab fiqh classic yang membahas secara mendasar terkait fiqh madzhab imam syafi\'i.'
         },
