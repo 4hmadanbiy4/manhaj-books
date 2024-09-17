@@ -1,0 +1,150 @@
+{% extends 'base.html' %} 
+{% block content %}
+<style>
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-shadow: border-box;
+    }
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+    }
+    header {
+        text-align: center;
+        background-color: chartreuse;
+        padding: 10px 0;
+    }
+    h1 {
+        font-family: Georgia, serif;
+        font-size: 3rem;
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-align: center;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px auto;
+    }
+    th, td {
+        padding: 10px;
+        border: 1px solid black;
+    }
+    th {
+        background-color: greenyellow;
+        text-align: left;
+    }
+
+    .label {
+        text-align: center;
+    }
+    .slogan {
+        text-align: center;
+        margin-top: 10px;
+        margin-bottom: 48px;
+    }
+
+    #center-inputsubmit {
+        text-align: center;
+    }
+    
+    .tombol_pesan {
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        color: white;
+        background-color: #4CAF50; /* Green */
+        border: none;
+        border-radius: 10px;
+        padding: 15px 32px;
+        /* text-align: center; */
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        /* align-items: center;
+        justify-content: center; */
+    }
+
+    /* button:hover {
+        background-color: #89ff8d;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+    } */
+ 
+    .table-price, .table-name {
+        text-wrap: nowrap;
+    }
+
+
+    /* .content {
+        width: 80%;
+        margin: 200px auto;
+    } */
+
+    
+  </style>
+<h3>Buku-buku Tersedia: </h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th class="label">Nama Kitab</th>
+                <th class="label">Harga</th>
+                <th class="label">Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                
+                <td class="table-name">{{ product.name }}</td>
+                <td class="table-price">Rp {{ product.price }}</td>
+                <td>{{ product.description }}</td>
+            
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+<form method="POST">
+  {% csrf_token %}
+
+    <!-- <select name="option" id="option">
+        {% for product in products %}
+        <option value="{{ option }}">{{ product.name }}</option>
+        {% endfor %}
+    </select> -->
+    <table>
+        <tr>
+            <td>
+                <label for="customer">Pemesanan:</label>
+            </td>
+            <td>
+                {{ form.pemesan }}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="orderedbook">Buku:</label>
+            </td>
+            <td>
+                {{ form.buku }} 
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="pcs">Pcs:</label>
+            </td>
+            <td>
+                 {{ form.pcs }} 
+            </td>
+        </tr>
+        <tr id="center-inputsubmit">
+            <td colspan="2">
+                <input type="submit" value="Add book Entry" class="tombol_pesan">
+            </td>
+        </tr>
+    </table>
+</form>
+
+{% endblock %}

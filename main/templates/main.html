@@ -80,6 +80,8 @@
       </style>
 </head>
 <body>
+    {% extends 'base.html' %}
+    {% block content %}
     <div class="content">
         <h1>{{ sambutan }}</h1>
         <p class="slogan">{{ slogan }}</p>
@@ -90,7 +92,6 @@
                     <th class="label">Nama Kitab</th>
                     <th class="label">Harga</th>
                     <th class="label">Deskripsi</th>
-                    <th>Pilih</th>
                 </tr>
             </thead>
             <tbody>
@@ -100,14 +101,41 @@
                     <td class="table-name">{{ product.name }}</td>
                     <td class="table-price">Rp {{ product.price }}</td>
                     <td>{{ product.description }}</td>
-                    <td><input type="checkbox"></td>
              
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        {% if not mood_entries %}
+        <p>Belum ada pesanan.</p>
+        {% else %}
+        <table>
+        <tr>
+            <th>Pemesan</th>
+            <!-- <th>Time</th> -->
+            <th>Book</th>
+            <th>Pcs</th>
+        </tr>
+
+        {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
+        {% endcomment %} 
+        {% for product in book_entries %}
+        <tr>
+            <td>{{product.pemesan}}</td>
+            <!-- <td>{{product.time}}</td> -->
+            <td>{{product.buku}}</td>
+            <td>{{product.pcs}}</td>
+        </tr>
+        {% endfor %}
+        </table>
+        {% endif %}
+
+        <br />
+
+        <a href="{% url 'main:create_reservation_entry' %}">
         <button>Beli</button>
+        </a>
     </div>
-    
+{% endblock content %}
 </body>
 </html>
