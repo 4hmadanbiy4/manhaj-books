@@ -93,10 +93,10 @@ Dinamai ORM sebab ORM memungkinkan kita berinteraksi dengan database menggunakan
 - melakukan routing untuk 4 fungsi baru XML, JSON, XML by ID, dan JSON by ID pada urls.py
 - Menjawab pertanyaan yang ada pada tugas individu 2 ini
 # show_xml
-![show_xml](image-5.png)
+![image](https://github.com/user-attachments/assets/5b112fa2-aed4-465f-88ea-fa7f74f37ae8)
 # show_json
-![show_json](image-6.png)
+![image](https://github.com/user-attachments/assets/dff51503-385e-41c2-b894-b6b418818b87)
 # show_xml_by_id
-![show_xml_by_id](image-7.png)
+![image](https://github.com/user-attachments/assets/4a27adad-5737-450f-a0fb-f6c663a74427)
 # show_json_by_id
-![show_json_by_id](image-8.png)
+![image](https://github.com/user-attachments/assets/b137df1f-e2bf-4398-b4e0-3bf186776475)
