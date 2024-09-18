@@ -8,6 +8,7 @@ class Product(models.Model):
     description = models.TextField()
 
 BOOK_CHOICES = [
+
     ('Fathul Qorib', 'Fathul Qorib'),
     ("I'anatut tholibin", "I'anatut tholibin"),
     ("Is'adur rofiq", "Is'adur rofiq"),
@@ -15,6 +16,7 @@ BOOK_CHOICES = [
     ("Shohih bukhori", "Shohih bukhori"),
     ("Shohih muslim", "Shohih muslim"),
     ("Idhohul mubham", "Idhohul mubham")
+    
 ]
 
 class Reservation(models.Model):
