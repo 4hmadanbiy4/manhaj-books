@@ -2,7 +2,7 @@
 
 ## Proyek E-Commerce - Tugas 2 PBP
 
-# Tugas Individu 1
+# Tugas Individu 2
 ## 1.)Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step 
 ### 1. Membuat Proyek Baru
 * **Membuat folder baru bernama manhaj-books**
@@ -75,7 +75,7 @@ Django merupakan pilihan yang populer untuk memulai pembelajaran pengembangan we
 
 Dinamai ORM sebab ORM memungkinkan kita berinteraksi dengan database menggunakan sintaks Python yang lebih intuitif, tanpa harus menulis query SQL secara langsung. Kita bisa membuat, membaca, memperbarui, dan menghapus data dalam database seolah-olah kita sedang berinteraksi dengan objek Python.
 
-# Tugas Individu 2
+# Tugas Individu 3
 ## 1.) Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
 ### Karena ketika kita tidak menggunakan data delivery maka akan terjadi penulisan secara manual terus menerus dan hal tersebut akan mempersulit developer dalam mengolah data secara efisien, akurat, dan aman tentunya.
 ## 2.) Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
