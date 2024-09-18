@@ -2,7 +2,7 @@
 
 ## Proyek E-Commerce - Tugas 2 PBP
 
-
+# Tugas Individu 1
 ## 1.)Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step 
 ### 1. Membuat Proyek Baru
 * **Membuat folder baru bernama manhaj-books**
@@ -75,3 +75,28 @@ Django merupakan pilihan yang populer untuk memulai pembelajaran pengembangan we
 
 Dinamai ORM sebab ORM memungkinkan kita berinteraksi dengan database menggunakan sintaks Python yang lebih intuitif, tanpa harus menulis query SQL secara langsung. Kita bisa membuat, membaca, memperbarui, dan menghapus data dalam database seolah-olah kita sedang berinteraksi dengan objek Python.
 
+# Tugas Individu 2
+## 1.) Jelaskan mengapa kita memerlukan data delivery dalam pengimplementasian sebuah platform?
+### Karena ketika kita tidak menggunakan data delivery maka akan terjadi penulisan secara manual terus menerus dan hal tersebut akan mempersulit developer dalam mengolah data secara efisien, akurat, dan aman tentunya.
+## 2.) Menurutmu, mana yang lebih baik antara XML dan JSON? Mengapa JSON lebih populer dibandingkan XML?
+### JSON lebih populer karena memiliki sintaks yang lebih ringkas dan mudah dibaca, serta lebih mudah diproses oleh mesin, sedangkan XML lebih cocok untuk struktur data yang kompleks, validasi data, dan metadata.
+## 3.) Jelaskan fungsi dari method is_valid() pada form Django dan mengapa kita membutuhkan method tersebut?
+### fungsinya adalah untuk memastikan bahwa data yang diterima dari pengguna adalah data yang bersih dan aman. Kita membutuhkannya karena untuk berjaga-jaga jika terdapat data yang tidak bersih ataupun bahaya.
+## 4.) Mengapa kita membutuhkan csrf_token saat membuat form di Django? Apa yang dapat terjadi jika kita tidak menambahkan csrf_token pada form Django? Bagaimana hal tersebut dapat dimanfaatkan oleh penyerang? 
+### Sesuai namanya CSRF token diperlukan saat membuat form di Django untuk mencegah serangan Cross-Site Request Forgery (CSRF), jika tidak menambahkannya maka aplikasi rentan terhadap serangan CSRF, di mana penyerang dapat memanipulasi pengguna untuk mengirim permintaan berbahaya.
+## 5.) Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+### 
+- Memberikan tombol input pada laman main(show_main)
+- menampilkan daftar buku pada laman reservation
+- lalu meletakkan form dibawah tabel list buku-buku berserta harganya
+- menambahkan 4 fungsi baru yaitu view XML, JSON, XML by ID, dan JSON by ID.
+- melakukan routing untuk 4 fungsi baru XML, JSON, XML by ID, dan JSON by ID pada urls.py
+- Menjawab pertanyaan yang ada pada tugas individu 2 ini
+# show_xml
+![show_xml](image-5.png)
+# show_json
+![show_json](image-6.png)
+# show_xml_by_id
+![show_xml_by_id](image-7.png)
+# show_json_by_id
+![show_json_by_id](image-8.png)

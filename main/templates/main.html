@@ -106,25 +106,23 @@
                 {% endfor %}
             </tbody>
         </table>
-        {% if not mood_entries %}
+        {% if not ordered_books %}
         <p>Belum ada pesanan.</p>
         {% else %}
         <table>
         <tr>
             <th>Pemesan</th>
-            <!-- <th>Time</th> -->
             <th>Book</th>
             <th>Pcs</th>
         </tr>
 
         {% comment %} Berikut cara memperlihatkan data mood di bawah baris ini 
         {% endcomment %} 
-        {% for product in book_entries %}
+        {% for res in ordered_books %}
         <tr>
-            <td>{{product.pemesan}}</td>
-            <!-- <td>{{product.time}}</td> -->
-            <td>{{product.buku}}</td>
-            <td>{{product.pcs}}</td>
+            <td>{{res.pemesan}}</td>
+            <td>{{res.buku}}</td>
+            <td>{{res.pcs}}</td>
         </tr>
         {% endfor %}
         </table>
