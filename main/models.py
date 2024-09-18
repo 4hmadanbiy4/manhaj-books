@@ -1,7 +1,6 @@
 from django.db import models
 import uuid
 
-    
 class Product(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
@@ -15,7 +14,7 @@ BOOK_CHOICES = [
     ("Siroh nabawiyah", "Siroh nabawiyah"),
     ("Shohih bukhori", "Shohih bukhori"),
     ("Shohih muslim", "Shohih muslim"),
-    ("Idhohul mubham", "Idhohul mubham"),
+    ("Idhohul mubham", "Idhohul mubham")
 ]
 
 class Reservation(models.Model):
