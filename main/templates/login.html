@@ -1,12 +1,131 @@
 {% extends 'base.html' %}
 
 {% block meta %}
-<title>Login</title>
+<title>Login Page</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f7f7f7; /* Warna latar belakang halaman */
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column; /* Menjadikan konten tersusun secara vertikal */
+        justify-content: center; /* Memposisikan konten di tengah secara horizontal */
+        align-items: center; /* Memposisikan konten di tengah secara vertikal */
+        height: 90vh; /* Tinggi penuh layar */
+    }
+
+    .sambutan {
+        padding: 15px 20px; /* Padding untuk jarak internal */
+        background-color: #e0f7fa; /* Latar belakang untuk kontras */
+        border-radius: 30px; /* Sudut membulat */
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
+        font-family: Georgia, serif;
+        font-size: 3rem;
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        margin-bottom: 50px;
+    }
+
+    .login {
+        background-color: #ffffff; /* Warna latar belakang kotak login */
+        padding: 40px;
+        width: 300px; /* Lebar kotak login */
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan yang lebih halus */
+        border-radius: 10px; /* Sudut yang lebih membulat */
+        text-align: center;
+        transition: transform 0.3s ease-in-out; /* Transisi */
+        margin-top: -20px;
+    }
+
+    .login:hover {
+        transform: translateY(-5px); /* Efek naik saat hover */
+    }
+
+    .login_m {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    table {
+        width: 100%;
+        margin-bottom: 20px; /* Jarak antar elemen */
+    }
+
+    table td {
+        padding: 10px 0;
+    }
+
+    input[type="text"], input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn.login_btn {
+        background-color: #22cd55; /* Warna tombol */
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn.login_btn:hover {
+        background-color: #1da848; /* Warna tombol saat dihover */
+    }
+
+    .message {
+        margin: 20px 0;
+        color: #7be73c; /* Warna pesan error */
+    }
+
+    a {
+        text-decoration: none;
+        color: #22cd55;
+        font-weight: bold;
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+    a:hover {
+        color: #1da848; /* Warna link saat dihover */
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    ul li {
+        background-color: #f8d7da;
+        color: #721c24;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+    }
+</style>
 {% endblock meta %}
 
 {% block content %}
+<!-- Pesan sambutan di luar kotak login -->
+<p class="sambutan">{{ sambutan }}</p>
+
+<!-- Kotak login -->
 <div class="login">
-  <h1>Login</h1>
+  <h1 class="login_m">Login</h1>
 
   <form method="POST" action="">
     {% csrf_token %}
@@ -20,12 +139,16 @@
   </form>
 
   {% if messages %}
-  <ul>
-    {% for message in messages %}
-    <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-  {% endif %} Don't have an account yet?
+  <div class="message">
+    <ul>
+      {% for message in messages %}
+      <li>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %} 
+
+  Don't have an account yet?
   <a href="{% url 'main:register' %}">Register Now</a>
 </div>
 

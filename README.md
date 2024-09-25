@@ -100,3 +100,31 @@ Dinamai ORM sebab ORM memungkinkan kita berinteraksi dengan database menggunakan
 ![image](https://github.com/user-attachments/assets/4a27adad-5737-450f-a0fb-f6c663a74427)
 # show_json_by_id
 ![image](https://github.com/user-attachments/assets/b137df1f-e2bf-4398-b4e0-3bf186776475)
+
+# **Tugas Individu 4**
+## 1.) Apa perbedaan antara HttpResponseRedirect() dan redirect()
+### HttpResponseRedirect() adalah sebuah class yang mengembalikan objek HttpResponse untuk melakukan redirect dan harus dengan url yang tepat, sedangkan redirect() adalah function shortcut yang lebih ringkas dan fleksibel daripada HttpResponseRedirect(), dia bisa menggunakan url, objek, dan lain-lain lalu sisanya akan diurus oleh django.
+## 2.) Jelaskan cara kerja penghubungan model Product dengan User!
+### Untuk menghubungkan model Product dengan User, gunakan foreign key untuk relasi one-to-many atau many-to-many field untuk relasi many-to-many. Bisa juga dengan menggunakan through model untuk menyimpan informasi tambahan pada relasi many-to-many. Sehingga tiap user memiliki relasi terhadap list productnya sendiri-sendiri, dan tiap user memiliki list Product yang berbeda.
+## 3.) Apa perbedaan antara authentication dan authorization, apakah yang dilakukan saat pengguna login? Jelaskan bagaimana Django mengimplementasikan kedua konsep tersebut.
+### Authentication adalah proses memverifikasi identitas pengguna, sedangkan authorization adalah proses menentukan apa yang dapat dilakukan oleh pengguna. Saat pengguna login, sistem melakukan autentikasi untuk memastikan identitasnya valid, kemudian melakukan otorisasi untuk menentukan tindakan apa saja yang boleh dilakukan oleh pengguna. 
+
+
+## 4.) Bagaimana Django mengingat pengguna yang telah login? Jelaskan kegunaan lain dari cookies dan apakah semua cookies aman digunakan?
+### Django mengelola sesi pengguna dengan menggunakan mekanisme cookie. Saat pengguna berhasil autentikasi, Django akan menerbitkan sebuah cookie unik yang akan disimpan di browser klien. Cookie ini berisi ID sesi yang merujuk ke data sesi yang disimpan di server. Pada permintaan berikutnya, browser akan mengirimkan cookie ini kembali ke server. Django kemudian akan mencari data sesi yang sesuai dengan ID sesi pada cookie untuk menentukan apakah pengguna sudah login. Selain untuk mengelola sesi, cookie juga dapat digunakan untuk menyimpan data pengguna secara lokal, seperti preferensi atau data keranjang belanja. Namun, penting untuk memperhatikan keamanan cookies, terutama cookies pihak ketiga yang dapat digunakan untuk pelacakan.
+###
+### kegunaan lain: 
+### adalah untuk menyimpan preferensi pengguna, seperti tema situs, bahasa yang digunakan, atau item yang ada di keranjang belanja. Namun, tidak semua cookies aman digunakan. Cookies pihak ketiga, misalnya, dapat melacak aktivitas pengguna di berbagai situs web. Oleh karena itu, penting untuk membatasi penggunaan cookies pihak ketiga dan memberikan opsi kepada pengguna untuk menolak cookies jika mereka tidak ingin dilacak.
+
+
+## 5.)  Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+
+### - Hal pertama yang saya lakukan adalah membuat function untuk register, login, dan logout pada file views.py 
+### - Membuat file html untuk login, register 
+### - Menambahkan path url register, login, dan logout pada urls.py 
+### - merestriksi function show_main dengan @login_required(login_url='/login'), agar laman main hanya dapat diakses setelah user login
+### - mencoba membuat akun dengan data dummy, 2 akun 3 product
+### - menerapkan cookie agar data dapat dipakai
+### - menerapkan relasi antara Product dengan user many-to-many
+### - menghapus db.sqlite3 untuk mereset list product pada web karena sebelumnya list product antara user satu dan lainnya masih sama(karena belum diterapkan relasi antara product dan user)
+### - membuat akun lagi 2, dan masing-masing akun memesan 3 barang(terdapat 3 list product pada masing-masing akun)

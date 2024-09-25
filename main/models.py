@@ -1,7 +1,9 @@
+from django.contrib.auth.models import User
 from django.db import models
 import uuid
 
 class Product(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     name = models.CharField(max_length=200)
     price = models.IntegerField()
@@ -20,6 +22,7 @@ BOOK_CHOICES = [
 ]
 
 class Reservation(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     pemesan = models.CharField(max_length=100)
     buku = models.CharField(max_length=100, choices=BOOK_CHOICES)
