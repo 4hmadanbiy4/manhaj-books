@@ -1,0 +1,22 @@
+<div class="relative break-inside-avoid mb-6">
+    <div class="bg-white shadow-md rounded-lg border-2 border-green-300 p-4 flex flex-col">
+        <h3 class="font-bold text-xl text-gray-800">{{ reservation.pemesan }}</h3>
+        <p class="font-semibold text-lg mt-2">{{ reservation.buku }}</p>
+        <p></p>
+        <p class="text-gray-700 mb-4">
+            <span class="bg-green-100 p-2 rounded">{{ reservation.pcs }}</span>
+        </p>
+    </div>
+    <div class="absolute top-0 right-0 flex space-x-1 mt-2">
+        <a href="{% url 'main:edit_pesanan' reservation.pk %}" class="bg-green-500 hover:bg-green-600 text-white rounded-lg p-2 transition duration-300 shadow-md transform hover:scale-105 active:scale-95 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
+            </svg>
+        </a>
+        <a href="{% url 'main:delete_pesanan' reservation.pk %}" class="bg-red-500 hover:bg-red-600 text-white rounded-lg p-2 transition duration-300 shadow-md transform hover:scale-105 active:scale-95 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+            </svg>
+        </a>
+    </div>    
+</div>

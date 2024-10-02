@@ -4,152 +4,156 @@
 <title>Login Page</title>
 <style>
     body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7; /* Warna latar belakang halaman */
-        margin: 0;
-        padding: 0;
         display: flex;
-        flex-direction: column; /* Menjadikan konten tersusun secara vertikal */
-        justify-content: center; /* Memposisikan konten di tengah secara horizontal */
-        align-items: center; /* Memposisikan konten di tengah secara vertikal */
-        height: 90vh; /* Tinggi penuh layar */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f0f4f7; /* Light grayish-white background */
+        font-family: Arial, sans-serif;
     }
 
     .sambutan {
-        padding: 15px 20px; /* Padding untuk jarak internal */
-        background-color: #e0f7fa; /* Latar belakang untuk kontras */
-        border-radius: 30px; /* Sudut membulat */
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan lembut */
-        font-family: Georgia, serif;
-        font-size: 3rem;
+        padding: 15px 20px;
+        background-color: #b2ebf2; /* Light cyan for welcoming message */
+        border-radius: 30px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+        font-size: 2.5rem;
         color: #333;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 30px;
     }
 
     .login {
-        background-color: #ffffff; /* Warna latar belakang kotak login */
+        background-color: #ffffff;
         padding: 40px;
-        width: 300px; /* Lebar kotak login */
-        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* Bayangan yang lebih halus */
-        border-radius: 10px; /* Sudut yang lebih membulat */
+        width: 100%;
+        max-width: 350px;
+        box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
         text-align: center;
-        transition: transform 0.3s ease-in-out; /* Transisi */
-        margin-top: -20px;
+        margin: 0 auto;
     }
 
-    .login:hover {
-        transform: translateY(-5px); /* Efek naik saat hover */
-    }
-
-    .login_m {
-        font-size: 24px;
-        font-weight: bold;
+    .login h1 {
         margin-bottom: 20px;
-        color: #333;
+        font-size: 2rem;
+        color: #388e3c; /* Soft green color for heading */
     }
 
-    form {
+    .login form {
         display: flex;
         flex-direction: column;
+        gap: 10px; /* Spacing between input elements */
     }
 
-    table {
-        width: 100%;
-        margin-bottom: 20px; /* Jarak antar elemen */
-    }
-
-    table td {
-        padding: 10px 0;
-    }
-
-    input[type="text"], input[type="password"] {
+    .login form input[type="text"],
+    .login form input[type="password"] {
         width: 100%;
         padding: 10px;
-        margin: 10px 0;
         border: 1px solid #ccc;
         border-radius: 5px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
     }
 
-    .btn.login_btn {
-        background-color: #22cd55; /* Warna tombol */
+    .login form input[type="text"]:focus,
+    .login form input[type="password"]:focus {
+        border-color: #388e3c; /* Border color when focused */
+        outline: none;
+    }
+
+    .login form button {
+        background-color: #388e3c; /* Soft green button */
         color: white;
         border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
+        padding: 10px;
         cursor: pointer;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
+        border-radius: 5px;
+        transition: background-color 0.3s;
     }
 
-    .btn.login_btn:hover {
-        background-color: #1da848; /* Warna tombol saat dihover */
+    .login form button:hover {
+        background-color: #33691e; /* Darker green on hover */
+    }
+
+    .login a {
+        margin-top: 20px;
+        display: inline-block;
+        color: #007bff; /* Blue color for the link */
+        text-decoration: none;
+    }
+
+    .login a:hover {
+        text-decoration: underline;
     }
 
     .message {
-        margin: 20px 0;
-        color: #7be73c; /* Warna pesan error */
-    }
-
-    a {
-        text-decoration: none;
-        color: #22cd55;
-        font-weight: bold;
-        display: inline-block;
         margin-top: 10px;
     }
 
-    a:hover {
-        color: #1da848; /* Warna link saat dihover */
+    .message .bg-success {
+        background-color: #d4edda;
+        border: 1px solid #c3e6cb;
+        color: #155724;
+        padding: 10px;
+        border-radius: 5px;
     }
 
-    ul {
-        list-style-type: none;
-        padding: 0;
-    }
-
-    ul li {
+    .message .bg-error {
         background-color: #f8d7da;
+        border: 1px solid #f5c6cb;
         color: #721c24;
         padding: 10px;
         border-radius: 5px;
-        margin-bottom: 10px;
     }
 </style>
 {% endblock meta %}
 
 {% block content %}
-<!-- Pesan sambutan di luar kotak login -->
-<p class="sambutan">{{ sambutan }}</p>
+<p class="sambutan">Welcome Back!</p>
 
-<!-- Kotak login -->
 <div class="login">
-  <h1 class="login_m">Login</h1>
+    <h1>Login</h1>
 
-  <form method="POST" action="">
-    {% csrf_token %}
-    <table>
-      {{ form.as_table }}
-      <tr>
-        <td></td>
-        <td><input class="btn login_btn" type="submit" value="Login" /></td>
-      </tr>
-    </table>
-  </form>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <input type="hidden" name="remember" value="true">
+        <div>
+            <label for="username" class="sr-only">Username</label>
+            <input id="username" name="username" type="text" required placeholder="Username">
+        </div>
+        <div>
+            <label for="password" class="sr-only">Password</label>
+            <input id="password" name="password" type="password" required placeholder="Password">
+        </div>
+        <button type="submit">
+            Log in
+        </button>
+    </form>
 
-  {% if messages %}
-  <div class="message">
-    <ul>
-      {% for message in messages %}
-      <li>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  </div>
-  {% endif %} 
+    {% if messages %}
+    <div class="message">
+        {% for message in messages %}
+            {% if message.tags == "success" %}
+                <div class="bg-success">{{ message }}</div>
+            {% elif message.tags == "error" %}
+                <div class="bg-error">{{ message }}</div>
+            {% else %}
+                <div class="bg-info">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
 
-  Don't have an account yet?
-  <a href="{% url 'main:register' %}">Register Now</a>
+    <div class="text-center mt-4">
+        <p class="text-sm text-black">
+            Don't have an account yet?
+            <a href="{% url 'main:register' %}" class="font-medium text-indigo-200 hover:text-indigo-300">
+                Register Now
+            </a>
+        </p>
+    </div>
 </div>
-
 {% endblock content %}

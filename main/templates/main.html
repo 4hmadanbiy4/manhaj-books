@@ -4,183 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ManhajBooks</title>
-    <style>
-        /* Reset and base styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f7f7f7; /* Background halaman */
-        }
-
-        /* Header Styles */
-        header {
-            text-align: center;
-            background-color: #4CAF50; /* Warna latar belakang header */
-            color: white;
-            padding: 20px 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan pada header */
-        }
-
-        h1 {
-            font-family: Georgia, serif;
-            font-size: 3rem;
-            color: #333;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        /* Table Styles */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            background-color: #fff; /* Warna latar belakang tabel */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Bayangan tabel */
-            border-radius: 8px; /* Sudut tumpul */
-            overflow: hidden; /* Menghindari sudut tabel terpotong */
-        }
-
-        th, td {
-            padding: 15px;
-            border-bottom: 1px solid #ddd; /* Border halus */
-        }
-
-        th {
-            background-color: #4CAF50; /* Warna latar belakang header tabel */
-            color: white;
-            text-align: left;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9; /* Warna latar belakang untuk baris genap */
-        }
-
-        tr:hover {
-            background-color: #f1f1f1; /* Warna latar belakang saat hover */
-        }
-
-        .label {
-            text-align: center;
-        }
-
-        .slogan {
-            text-align: center;
-            margin-top: 10px;
-            margin-bottom: 48px;
-            font-size: 1.2rem;
-            color: #666; /* Warna teks slogan */
-        }
-
-        /* Button Styles */
-        button {
-            font-family: Arial, sans-serif;
-            font-size: 16px;
-            color: white;
-            background-color: #4CAF50; /* Warna tombol */
-            border: none;
-            border-radius: 10px;
-            padding: 15px 32px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            cursor: pointer;
-            margin: 10px 5px; /* Jarak antar tombol */
-            transition: background-color 0.3s, transform 0.3s; /* Transisi halus */
-        }
-
-        button:hover {
-            background-color: #45a049; /* Warna tombol saat dihover */
-            transform: scale(1.05); /* Efek pembesaran saat hover */
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Bayangan tambahan */
-        }
-
-        .table-price, .table-name {
-            white-space: nowrap; /* Mencegah teks terpotong */
-        }
-
-        .content {
-            width: 80%;
-            margin: 100px auto; /* Pusatkan konten dengan margin */
-            background-color: #ffffff; /* Background kotak konten */
-            padding: 30px;
-            border-radius: 10px; /* Sudut tumpul kotak konten */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Bayangan kotak konten */
-        }
-
-        /* Additional styling for last login section */
-        h5 {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #777; /* Warna teks sesi terakhir login */
-            text-align: center;
-        }
-    </style>
 </head>
-<body>
+<body class="bg-gray-100">
     {% extends 'base.html' %}
+    {% load static %}
     {% block content %}
-    <div class="content">
-        <h1>{{ sambutan }}</h1>
-        <p class="slogan">{{ slogan }}</p>
-        <h3>Buku-buku Tersedia: </h3>
-        <table class="table">
+    {% include 'navbar.html' %}
+    <div class="container mx-auto p-5">
+        <h1 class="text-3xl font-bold text-center mb-4">{{ sambutan }}</h1>
+        
+        <h3 class="text-2xl font-semibold mb-4">Buku-buku Tersedia:</h3>
+        <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden mb-8">
             <thead>
-                <tr>
-                    <th class="label">Nama Kitab</th>
-                    <th class="label">Harga</th>
-                    <th class="label">Deskripsi</th>
+                <tr class="bg-green-600 text-white uppercase text-sm">
+                    <th class="py-3 px-4">Nama Kitab</th>
+                    <th class="py-3 px-4">Harga</th>
+                    <th class="py-3 px-4">Deskripsi</th>
                 </tr>
             </thead>
             <tbody>
                 {% for product in products %}
-                <tr>
-                    <td class="table-name">{{ product.name }}</td>
-                    <td class="table-price">Rp {{ product.price }}</td>
-                    <td>{{ product.description }}</td>
+                <tr class="hover:bg-gray-100">
+                    <td class="py-2 px-4 text-gray-700">{{ product.name }}</td>
+                    <td class="py-2 px-4 text-gray-700">Rp {{ product.price }}</td>
+                    <td class="py-2 px-4 text-gray-700">{{ product.description }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
         
         {% if not ordered_books %}
-        <p>Belum ada pesanan.</p>
+        <div class="flex flex-col items-center justify-center min-h-[24rem] p-6">
+            <p class="text-center text-gray-600 mt-4">Belum ada daftar pesanan.</p>
+            <h5></h5>
+            <img src="{% static 'image/order_now.png' %}" alt="order_now" class="w-40 h-32 mb-4"/>
+        </div>
         {% else %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Pemesan</th>
-                    <th>Book</th>
-                    <th>Pcs</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for res in ordered_books %}
-                <tr>
-                    <td>{{res.pemesan}}</td>
-                    <td>{{res.buku}}</td>
-                    <td>{{res.pcs}}</td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6 w-full">
+            {% for res in ordered_books %}
+                {% include 'card_pesanan.html' with reservation=res %}
+            {% endfor %}
+        </div>
         {% endif %}
 
-        <br />
-
-        <a href="{% url 'main:create_reservation_entry' %}">
-            <button>Beli</button>
-        </a>
-        <a href="{% url 'main:logout' %}">
-            <button>Logout</button>
-        </a>
-        <h5>
+        <div class="text-center mt-5">
+            <a href="{% url 'main:create_reservation_entry' %}">
+                <button class="bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700 transition duration-300">
+                    Beli
+                </button>
+            </a>
+        </div>
+        
+        <h5 class="text-center text-gray-600 mt-4">
             {{ user.username }} : Sesi terakhir login: {{ last_login }}
         </h5>
     </div>

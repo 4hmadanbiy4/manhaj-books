@@ -128,3 +128,43 @@ Dinamai ORM sebab ORM memungkinkan kita berinteraksi dengan database menggunakan
 ### - menerapkan relasi antara Product dengan user many-to-many
 ### - menghapus db.sqlite3 untuk mereset list product pada web karena sebelumnya list product antara user satu dan lainnya masih sama(karena belum diterapkan relasi antara product dan user)
 ### - membuat akun lagi 2, dan masing-masing akun memesan 3 barang(terdapat 3 list product pada masing-masing akun)
+
+# **Tugas Individu 5**
+## 1.) Jika terdapat beberapa CSS selector untuk suatu elemen HTML, jelaskan urutan prioritas pengambilan CSS selector tersebut!
+#### Jawab: urutan prioritas yang dilakukan oleh selector CSS adalah: inline styles > ID selector > class selector > element selector. Semakin spesifik selector, semakin tinggi prioritasnya.
+## 2.) Mengapa responsive design menjadi konsep yang penting dalam pengembangan aplikasi web? Berikan contoh aplikasi yang sudah dan belum menerapkan responsive design!
+#### Jawab: Responsive design membuat website dapat menyesuaikan tampilannya secara otomatis dengan berbagai ukuran layar, memberikan pengalaman pengguna yang lebih baik, meningkatkan SEO, dan meningkatkan konversi.
+## 3.) Jelaskan perbedaan antara margin, border, dan padding, serta cara untuk mengimplementasikan ketiga hal tersebut!
+#### Jawab: 
+- Margin: Jarak antara elemen satu dengan elemen lainnya. Bayangkan seperti ruang kosong di sekitar sebuah kotak.
+- Border: Garis batas yang mengelilingi suatu elemen. Mirip seperti bingkai pada foto.
+- Padding: Jarak antara konten di dalam elemen dengan batas (border) elemen tersebut. Bayangkan seperti ruang kosong di dalam sebuah kotak.
+### Contoh: 
+- Margin: Jika kamu ingin memberi jarak antara dua paragraf, kamu akan menggunakan properti margin.
+- Border: Jika kamu ingin membuat sebuah kotak dengan garis tepi, kamu akan menggunakan properti border.
+- Padding: Jika kamu ingin memberi jarak antara teks dengan batas kotak, kamu akan menggunakan properti padding.
+#### Kesimpulan : Margin mengatur jarak di luar elemen, border adalah garis batas, dan padding mengatur jarak di dalam elemen.
+
+## 4.) Jelaskan konsep flex box dan grid layout beserta kegunaannya!
+#### Jawab: Flexbox dan grid layout adalah dua fitur CSS modern yang sangat berguna untuk mengatur tata letak elemen di dalam suatu wadah. Flexbox lebih cocok untuk tata letak satu dimensi (baris atau kolom), sedangkan grid layout memungkinkan penempatan elemen secara lebih bebas dalam dua dimensi (baris dan kolom). Flexbox sangat ideal untuk membuat tata letak yang responsif dan fleksibel, terutama pada elemen-elemen yang memiliki ukuran yang berbeda-beda. Grid layout sangat berguna untuk membuat tata letak yang lebih kompleks, seperti desain yang mirip dengan layout majalah atau buku. Dengan menggunakan kedua fitur ini, Anda dapat menciptakan tata letak yang dinamis dan menarik tanpa perlu mengandalkan teknik-teknik tata letak yang lebih kompleks seperti float dan positioning.
+
+## 5.) Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+#### Jawab: 
+- Membuat function edit_pesanan dan delete_pesanan serta menyambungkannya pada urls.py
+- membuat edit_pesanan.html, menerapkan tailwind pada base.html serta mengextends beberapa file html terhadap base.html, untuk menggunakan tailwind, lalu berkreasi dengan sekedar sederhana saja
+- membuat navbar(dengan segala tombol menunya, baik versi mobile atau pc), card_pesanan, serta membuat static folder dengan berisi folder image, dan CSS
+
+##### Berikut list file yang saya modified:
+- modified:   README.md
+- modified:   main/templates/create_reservation_entry.html
+- modified:   main/templates/login.html
+- modified:   main/templates/main.html
+- modified:   main/templates/register.html
+- modified:   main/urls.py
+- modified:   main/views.py
+- modified:   manhaj_books/settings.py
+- modified:   templates/base.html
+- main/templates/card_pesanan.html
+- main/templates/edit_pesanan.html
+- static/
+- templates/navbar.html

@@ -159,6 +159,29 @@ def logout_user(request):
     response.delete_cookie('last_login')
     return response
 
+def edit_pesanan(request, id):
+    # Get reserv entry berdasarkan id
+    reserv = Reservation.objects.get(pk = id)
+
+    # Set reserv entry sebagai instance dari form
+    form = ReservationForm(request.POST or None, instance=reserv)
+
+    if form.is_valid() and request.method == "POST":
+        # Simpan form dan kembali ke halaman awal
+        form.save()
+        return HttpResponseRedirect(reverse('main:show_main'))
+
+    context = {'form': form}
+    return render(request, "edit_pesanan.html", context)
+
+def delete_pesanan(request, id):
+    # Get reservation berdasarkan id
+    reserv = Reservation.objects.get(pk = id)
+    # Hapus reservation
+    reserv.delete()
+    # Kembali ke laman main
+    return HttpResponseRedirect(reverse('main:show_main'))
+
 def show_json(request):
     data = Reservation.objects.all()
     return HttpResponse(serializers.serialize("json", data), content_type="application/json")

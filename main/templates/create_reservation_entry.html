@@ -1,156 +1,51 @@
 {% extends 'base.html' %}
 {% block content %}
-<style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    body {
-        font-family: 'Poppins', Arial, sans-serif;
-        margin: 0;
-        padding: 20px;
-        background-color: #f5f5f5;
-        color: #333;
-    }
-    header {
-        text-align: center;
-        background-color: #28a745;
-        padding: 15px 0;
-        color: white;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-    h1 {
-        font-family: 'Merriweather', Georgia, serif;
-        font-size: 3rem;
-        color: #333;
-        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
-        text-align: center;
-        margin-bottom: 20px;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin: 20px auto;
-        background-color: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
-    th, td {
-        padding: 15px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-        font-size: 16px;
-    }
-    th {
-        background-color: #28a745;
-        color: white;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-    }
-    td {
-        background-color: #f9f9f9;
-    }
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-    .label {
-        text-align: center;
-    }
-    .slogan {
-        text-align: center;
-        margin-top: 10px;
-        margin-bottom: 48px;
-    }
-
-    #center-inputsubmit {
-        text-align: center;
-    }
+<div class="container mx-auto p-5 bg-gray-100">
+    <header class="text-center bg-green-600 py-4 shadow-md">
+        <h1 class="text-3xl text-white font-semibold text-shadow-md">Buku-buku Tersedia</h1>
+    </header>
     
-    .tombol_pesan {
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        color: white;
-        background-color: #28a745;
-        border: none;
-        border-radius: 25px;
-        padding: 15px 32px;
-        text-decoration: none;
-        display: inline-block;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    .tombol_pesan:hover {
-        background-color: #218838;
-    }
-    
-    .table-price, .table-name {
-        white-space: nowrap;
-    }
-    label {
-        font-weight: bold;
-        color: #555;
-    }
-    input[type="submit"]:hover {
-        background-color: #218838;
-    }
-    input[type="text"], select {
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        width: 100%;
-        font-size: 14px;
-        margin-bottom: 10px;
-    }
-    table input, table select {
-        width: 100%;
-        box-sizing: border-box;
-    }
-</style>
+    <h3 class="text-xl font-bold my-4">Daftar Buku:</h3>
+    <table class="min-w-full bg-white rounded-lg shadow-md overflow-hidden">
+        <thead>
+            <tr class="bg-green-600 text-white uppercase text-sm">
+                <th class="py-3 px-4">Nama Kitab</th>
+                <th class="py-3 px-4">Harga</th>
+                <th class="py-3 px-4">Deskripsi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr class="hover:bg-gray-200">
+                <td class="py-2 px-4 text-gray-700">{{ product.name }}</td>
+                <td class="py-2 px-4 text-gray-700">Rp {{ product.price }}</td>
+                <td class="py-2 px-4 text-gray-700">{{ product.description }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 
-<h3>Buku-buku Tersedia: </h3>
-<table class="table">
-    <thead>
-        <tr>
-            <th class="label">Nama Kitab</th>
-            <th class="label">Harga</th>
-            <th class="label">Deskripsi</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td class="table-name">{{ product.name }}</td>
-            <td class="table-price">Rp {{ product.price }}</td>
-            <td>{{ product.description }}</td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-
-<form method="POST">
-  {% csrf_token %}
-  <table>
-      <tr>
-          <td><label for="customer">Pemesan:</label></td>
-          <td>{{ form.pemesan }}</td>
-      </tr>
-      <tr>
-          <td><label for="orderedbook">Buku:</label></td>
-          <td>{{ form.buku }}</td>
-      </tr>
-      <tr>
-          <td><label for="pcs">Pcs:</label></td>
-          <td>{{ form.pcs }}</td>
-      </tr>
-      <tr id="center-inputsubmit">
-          <td colspan="2">
-              <input type="submit" value="Add book Entry" class="tombol_pesan">
-          </td>
-      </tr>
-  </table>
-</form>
-
+    <form method="POST" class="mt-8">
+        {% csrf_token %}
+        <table class="w-full bg-white rounded-lg shadow-md">
+            <tr>
+                <td class="py-4 px-4"><label for="customer" class="font-bold text-gray-600">Pemesan:</label></td>
+                <td class="py-4 px-4">{{ form.pemesan }}</td>
+            </tr>
+            <tr>
+                <td class="py-4 px-4"><label for="orderedbook" class="font-bold text-gray-600">Buku:</label></td>
+                <td class="py-4 px-4">{{ form.buku }}</td>
+            </tr>
+            <tr>
+                <td class="py-4 px-4"><label for="pcs" class="font-bold text-gray-600">Pcs:</label></td>
+                <td class="py-4 px-4">{{ form.pcs }}</td>
+            </tr>
+            <tr>
+                <td colspan="2" class="py-4 px-4 text-center">
+                    <input type="submit" value="Add Book Entry" class="tombol_pesan bg-green-600 text-white font-semibold rounded-lg py-2 px-4 transition duration-300 ease-in-out hover:bg-green-700">
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
 {% endblock %}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manhaj Books</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <nav class="bg-gradient-to-r from-green-400 to-green-500 shadow-lg fixed top-0 left-0 w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-white">Manhaj Books</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="#" class="text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Home</a>
+                    <a href="#" class="text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Products</a>
+                    <a href="#" class="text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Categories</a>
+                    <a href="#" class="text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Cart</a>
+                    {% if user.is_authenticated %}
+                        <span class="text-gray-300 mr-4">Welcome, {{ user.username }}</span>
+                        <a href="{% url 'main:logout' %}" class="text-center bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                            Logout
+                        </a>
+                    {% else %}
+                        <a href="{% url 'main:login' %}" class="text-center bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 mr-2">
+                            Login
+                        </a>
+                        <a href="{% url 'main:register' %}" class="text-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300">
+                            Register
+                        </a>
+                    {% endif %}
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-white hover:text-gray-200">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile -->
+        <div id="mobile-menu" class="hidden md:hidden bg-green-500">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#" class="block text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Home</a>
+                <a href="#" class="block text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Products</a>
+                <a href="#" class="block text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Categories</a>
+                <a href="#" class="block text-white hover:bg-green-600 px-3 py-2 rounded-md transition duration-300">Cart</a>
+                {% if user.is_authenticated %}
+                    <span class="block text-gray-300 px-3 py-2">Welcome, {{ user.username }}</span>
+                    <a href="{% url 'main:logout' %}" class="block bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded transition duration-300 text-center mt-2">
+                        Logout
+                    </a>
+                {% else %}
+                    <a href="{% url 'main:login' %}" class="block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded transition duration-300 text-center mt-2">
+                        Login
+                    </a>
+                    <a href="{% url 'main:register' %}" class="block bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded transition duration-300 text-center mt-2">
+                        Register
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>
