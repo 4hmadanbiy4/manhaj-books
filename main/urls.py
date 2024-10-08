@@ -14,7 +14,7 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('login/', login_user, name='login'),
     path('logout/', logout_user, name='logout'),
-    path('edit-pesanan/<str:id>', edit_pesanan, name='edit_pesanan'),
+    path('edit-pesanan/<uuid:id>', edit_pesanan, name='edit_pesanan'),
     path('delete/<uuid:id>', delete_pesanan, name='delete_pesanan'),
     path('create-res-entry-ajax', add_res_entry_ajax, name='add_res_entry_ajax'),
 ]

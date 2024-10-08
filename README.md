@@ -168,3 +168,30 @@ Dinamai ORM sebab ORM memungkinkan kita berinteraksi dengan database menggunakan
 - main/templates/edit_pesanan.html
 - static/
 - templates/navbar.html
+# **Tugas Individu 6**
+## 1.) Jelaskan manfaat dari penggunaan JavaScript dalam pengembangan aplikasi web!
+## Jawab: 
+JavaScript adalah bahasa pemrograman yang sangat penting dalam pengembangan aplikasi web modern. Manfaatnya sangat luas, mulai dari membuat halaman web menjadi lebih interaktif dan dinamis, hingga memungkinkan pembuatan aplikasi web yang kompleks dan kaya fitur. Dengan JavaScript, kita dapat memanipulasi elemen HTML, merespons aksi pengguna (seperti klik tombol), membuat animasi, validasi formulir, dan masih banyak lagi. Singkatnya, JavaScript adalah kunci untuk menciptakan pengalaman pengguna yang lebih baik dan aplikasi web yang lebih canggih.
+
+## 2.) Jelaskan fungsi dari penggunaan await ketika kita menggunakan fetch()! Apa yang akan terjadi jika kita tidak menggunakan await?
+## Jawab:
+**await** digunakan bersama **fetch()** untuk membuat kode asynchronous kita menjadi lebih sinkron dan mudah dipahami. Ketika kita menggunakan await, eksekusi kode akan berhenti sementara hingga permintaan data dari fetch() selesai. Ini memungkinkan kita untuk memproses data yang didapatkan secara berurutan, seolah-olah kode kita berjalan secara sinkron. Tanpa await, kode kita akan terus berjalan tanpa menunggu respons dari server, yang bisa menyebabkan masalah seperti mencoba mengakses data yang belum tersedia atau error. Singkatnya, await membuat kode kita lebih terstruktur dan mengurangi kemungkinan terjadinya kesalahan.
+
+## 3.) Mengapa kita perlu menggunakan decorator csrf_exempt pada view yang akan digunakan untuk AJAX POST?
+## Jawab:
+Decorator **csrf_exempt** digunakan pada view yang akan digunakan untuk AJAX POST karena untuk menonaktifkan perlindungan Cross-Site Request Forgery (CSRF) secara sementara. Perlindungan CSRF ini biasanya aktif untuk mencegah serangan dimana pengguna disuntikkan permintaan palsu ke dalam aplikasi web yang mereka percayai. Namun, pada kasus AJAX POST, terutama ketika kita mengirimkan data ke server yang sama dengan frontend, perlindungan CSRF ini bisa menjadi penghalang. Dengan menonaktifkan perlindungan ini menggunakan csrf_exempt, kita memungkinkan AJAX POST untuk berjalan dengan lancar tanpa mendapatkan error CSRF. Namun, perlu diingat bahwa menonaktifkan CSRF memiliki risiko keamanan, jadi hanya gunakan jika benar-benar diperlukan dan dengan pemahaman yang baik tentang implikasinya.
+
+## 4.) Pada tutorial PBP minggu ini, pembersihan data input pengguna dilakukan di belakang (backend) juga. Mengapa hal tersebut tidak dilakukan di frontend saja?
+## Jawab:
+Frontend dapat dengan mudah dimanipulasi oleh pengguna, sehingga validasi di backend bertindak sebagai lapisan keamanan tambahan. Selain itu, data yang dikirim dari frontend mungkin tidak selalu dalam format yang diharapkan, sehingga validasi backend memastikan bahwa data yang diproses oleh aplikasi sudah bersih dan aman.
+
+## 5.) Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial)!
+## Jawab:
+- Membuat function baru pada views.py yang bertujuan sama seperti add new entry pada week sebelum-sebelumnya akan tetapi kali ini menggunakan AJAX sehingga terdapat 2 jenis add nanti nya
+- menghapus loop yang mendisplay list entry reservation dan menggantinya dengan sebuah div ber-ID books_cards
+- membuat script dan buat function get untuk membaca data dan buat function untuk mendisplaynya
+- membuat modal sebagai form asynchronous yang didalamnya terdapat tombol untuk cancel dan save
+- buat code ini : document.getElementById("submitReservationEntry").addEventListener("click", hideModal); agar ketika men-save data baru berhasil dia akan menclose modal dan menghapus data yang tertulis di modal 
+- membuat function yang dapat merefresh laman utama secara menerus sehingga tidak perlu mereload laman saat ada data baru masuk
+- lalu menjawab semua pertanyaan ini
+- menerapkan string_tag agar semua input dari user benar-benar input yang tidak merusak dan ketika user memasukkan input yang merusak maka akan ada pesan error
